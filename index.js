@@ -36,6 +36,12 @@ app.get('/termos/pega-todos-os-termos', (req, res) => {
   res.send(termos);
 });
 
+app.get('/termos/pega-todos-os-termos/:id', (req, res) => {
+  const idParam = req.params.id;
+  const escolhaTermo = termos.find((termo) => termo.id == idParam);
+  res.send(escolhaTermo);
+});
+
 app.listen(port, () => {
   console.log(`Servidor rodando na porta http://localhost:${port}`);
 });
