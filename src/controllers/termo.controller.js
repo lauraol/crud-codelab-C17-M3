@@ -28,33 +28,13 @@ const findByIdTermosController = async (req, res) => {
 
 const createTermoController = async (req, res) => {
   const termo = req.body;
-
-  if (!termo || !termo.descricao || !termo.logo || !termo.ano_de_criacao) {
-    return res
-      .status(400)
-      .send({ message: 'Envie todos os campos do novo termo, por favor! >:(' });
-  }
-
   const newTermo = await termosService.createTermoService(termo);
   res.status(201).send(newTermo);
 };
 
 const editTermoController = async (req, res) => {
   const idParam = req.params.id;
-
   const editTermo = req.body;
-
-  if (
-    !editTermo ||
-    !editTermo.descricao ||
-    !editTermo.logo ||
-    !editTermo.ano_de_criacao
-  ) {
-    return res
-      .status(400)
-      .send({ message: 'Envie todos os campos do termo, por favor! >:(' });
-  }
-
   const editedTermo = await termosService.editTermoService(idParam, editTermo);
   res.send(editedTermo);
 };
