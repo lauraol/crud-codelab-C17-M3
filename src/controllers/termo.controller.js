@@ -1,5 +1,4 @@
 const termosService = require('../services/termo.service');
-const mongoose = require('mongoose');
 
 const findAllTermosController = async (req, res) => {
   const alltermos = await termosService.findAllTermosService();
