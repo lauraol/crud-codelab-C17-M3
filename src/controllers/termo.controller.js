@@ -15,10 +15,6 @@ const findAllTermosController = async (req, res) => {
 const findByIdTermosController = async (req, res) => {
   const idParam = req.params.id;
 
-  if (!mongoose.Types.ObjectId.isValid(idParam)) {
-    return res.status(400).send({ message: 'Id inválido, tente novamente...' });
-  }
-
   const chosenTermo = await termosService.findByIdTermoService(idParam);
 
   if (!chosenTermo) {
@@ -46,10 +42,6 @@ const createTermoController = async (req, res) => {
 const editTermoController = async (req, res) => {
   const idParam = req.params.id;
 
-  if (!mongoose.Types.ObjectId.isValid(idParam)) {
-    return res.status(400).send({ message: 'Id inválido, tente novamente...' });
-  }
-
   const editTermo = req.body;
 
   if (
@@ -69,10 +61,6 @@ const editTermoController = async (req, res) => {
 
 const deleteTermoController = async (req, res) => {
   const idParam = req.params.id;
-
-  if (!mongoose.Types.ObjectId.isValid(idParam)) {
-    return res.status(400).send({ message: 'Id inválido, tente novamente...' });
-  }
 
   await termosService.deleteTermoService(idParam);
 
