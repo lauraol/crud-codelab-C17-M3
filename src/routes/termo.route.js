@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const controllerTermos = require('../controllers/termo.controller');
 
-router.get('/pega-todos-os-termos', controllerTermos.findAllTermosController);
-router.get('/termo/:id', controllerTermos.findByIdTermosController);
-router.post('/create', controllerTermos.createTermoController);
-router.put('/update/:id', controllerTermos.editTermoController);
-router.delete('/delete/:id', controllerTermos.deleteTermoController);
+router.get('/all-termos', controllerTermos.findAllTermosController);
+router.get('/one-termo/:id', controllerTermos.findByIdTermosController);
+router.post('/create-termo', controllerTermos.createTermoController);
+router.put('/update-termo/:id', controllerTermos.editTermoController);
+router.delete('/delete-termo/:id', controllerTermos.deleteTermoController);
 
 module.exports = router;

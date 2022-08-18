@@ -2,32 +2,32 @@ const termosService = require('../services/termo.service');
 const mongoose = require('mongoose');
 
 const findAllTermosController = async (req, res) => {
-  const termos = await termosService.findAllTermosService();
+  const alltermos = await termosService.findAllTermosService();
 
-  if (termos.length == 0) {
+  if (alltermos.length == 0) {
     return res.status(404).send({
       message: 'Não existe nenhum termo cadastrado vamos começar? ;)',
     });
   }
-  res.send(termos);
+  res.send(alltermos);
 };
 
 const findByIdTermosController = async (req, res) => {
-  const parametroId = req.params.id;
+  const idParam = req.params.id;
 
-  if (!mongoose.Types.ObjectId.isValid(parametroId)) {
+  if (!mongoose.Types.ObjectId.isValid(idParam)) {
     return res.status(400).send({ message: 'Id inválido, tente novamente...' });
   }
 
-  const escolhaTermo = await termosService.findByIdTermoService(parametroId);
+  const chosenTermo = await termosService.findByIdTermoService(idParam);
 
-  if (!escolhaTermo) {
+  if (!chosenTermo) {
     return res
       .status(404)
       .send({ message: 'Termo não encontrado no Guide Dev ;(' });
   }
 
-  res.send(escolhaTermo);
+  res.send(chosenTermo);
 };
 
 const createTermoController = async (req, res) => {
@@ -50,20 +50,20 @@ const editTermoController = async (req, res) => {
     return res.status(400).send({ message: 'Id inválido, tente novamente...' });
   }
 
-  const termoEdit = req.body;
+  const editTermo = req.body;
 
   if (
-    !termoEdit ||
-    !termoEdit.descricao ||
-    !termoEdit.logo ||
-    !termoEdit.ano_de_criacao
+    !editTermo ||
+    !editTermo.descricao ||
+    !editTermo.logo ||
+    !editTermo.ano_de_criacao
   ) {
     return res
       .status(400)
       .send({ message: 'Envie todos os campos do termo, por favor! >:(' });
   }
 
-  const editedTermo = await termosService.editTermoService(idParam, termoEdit);
+  const editedTermo = await termosService.editTermoService(idParam, editTermo);
   res.send(editedTermo);
 };
 

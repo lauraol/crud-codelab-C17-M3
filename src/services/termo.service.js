@@ -1,27 +1,27 @@
 const Termos = require('../models/Termo');
 
 const findAllTermosService = async () => {
-  const termos = await Termos.find();
-  return termos;
+  const alltermos = await Termos.find();
+  return alltermos;
 };
 
-const findByIdTermoService = async (parametroId) => {
-  const termo = await Termos.findById(parametroId);
+const findByIdTermoService = async (idParam) => {
+  const termo = await Termos.findById(idParam);
   return termo;
 };
 
 const createTermoService = async (newTermo) => {
-  const termoCreated = await Termos.create(newTermo);
-  return termoCreated;
+  const createdTermo = await Termos.create(newTermo);
+  return createdTermo;
 };
 
-const editTermoService = async (id, termoEdit) => {
-  const termoUpdate = await Termos.findByIdAndUpdate(id, termoEdit);
-  return termoUpdate;
+const editTermoService = async (idParam, editTermo) => {
+  const updateTermo = await Termos.findByIdAndUpdate(idParam, editTermo);
+  return updateTermo;
 };
 
-const deleteTermoService = async (id) => {
-  return await Termos.findByIdAndDelete(id);
+const deleteTermoService = async (idParam) => {
+  return await Termos.findByIdAndDelete(idParam);
 };
 
 module.exports = {
