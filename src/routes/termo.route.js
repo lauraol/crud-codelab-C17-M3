@@ -1,9 +1,6 @@
 const router = require('express').Router();
 const controllerTermos = require('../controllers/termo.controller');
-const {
-  validId,
-  validObjectBody,
-} = require('../middlewares/paleta.middleware');
+const { validId, validObjectBody } = require('../middlewares/termo.middleware');
 
 router.get('/all-termos', controllerTermos.findAllTermosController);
 router.get(
