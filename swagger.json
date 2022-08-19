@@ -1,0 +1,98 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Guide Dev",
+    "description": "API para o CRUD de uma aplicação de comunidade de desenvolvedores que estão alimanetando um guia para outros devs.",
+    "termsOfService": "",
+    "contact": {
+      "email": "lauroutestesdev@gmail.com.br"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/termos",
+      "description": "API de teste - desenvolvimento e homologação"
+    },
+    {
+      "url": "https://api-guidedev.herokuapp.com/termos",
+      "description": "API de produção"
+    }
+  ],
+  "paths": {
+    "/all-termos": {
+      "get": {
+        "summary": "Lista de todos os termos cadastrados.",
+        "description": "Rota responsável por listar todos os termos cadastrados na aplicação.",
+        "tags": ["Termos"],
+        "responses": {
+          "404": {
+            "description": "Not Found ;("
+          },
+          "200": {
+            "description": "OK ;D",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Termos"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/one-termo/{id}": {
+      "get": {
+        "summary": "Busca um termo cadastrado de acordo com o id solicitado.",
+        "description": "Rota responsável por trazer apenas o termo solicitado com base no id passado.",
+        "tags": ["Termos"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do termo que será buscado.",
+            "required": "true"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Not Found ;(",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Termos"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Termos": {
+        "type": "object",
+        "properties": {
+          "termo": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          },
+          "logo": {
+            "type": "string"
+          },
+          "ano_de_criacao": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}
