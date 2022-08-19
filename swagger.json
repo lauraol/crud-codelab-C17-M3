@@ -55,7 +55,7 @@
             "name": "id",
             "in": "path",
             "description": "Id do termo que será buscado.",
-            "required": "true"
+            "required": true
           }
         ],
         "responses": {
@@ -69,6 +69,119 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/create-termo": {
+      "post": {
+        "summary": "Cadastrar termo no Guide Dev </>",
+        "description": "Rota responsável por cadastrar um termo na API.",
+        "tags": ["Termos"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Termos"
+              }
+            },
+            "examples": {
+              "Termos": {
+                "value": {
+                  "termo": "Json",
+                  "descricao": "Em computação, JSON, um acrônimo de JavaScript Object Notation, é um formato compacto, de padrão aberto independente, de troca de dados simples e rápida entre sistemas, especificado por Douglas Crockford em 2000, que utiliza texto legível a humanos, no formato atributo-valor.",
+                  "logo": "./assets/images/json.png",
+                  "ano_de_criacao": 2000
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad request, bro >:("
+          },
+          "201": {
+            "description": "Termo created :)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Termos"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/update-termo/{id}": {
+      "put": {
+        "summary": "Editar termo existente na API por meio do id.",
+        "description": "Rota responsável por fazer a edição de um termo conforme o id passado pelo cliente.",
+        "tags": ["Termos"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do termo que será editado.",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Termos"
+              },
+              "examples": {
+                "Termos": {
+                  "value": {
+                    "termo": "Json Editado",
+                    "descricao": "Em computação, JSON, um acrônimo de JavaScript Object Notation, é um formato compacto, de padrão aberto independente, de troca de dados simples e rápida entre sistemas, especificado por Douglas Crockford em 2000, que utiliza texto legível a humanos, no formato atributo-valor.",
+                    "logo": "./assets/images/json.png",
+                    "ano_de_criacao": 2001
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad request, bro >:("
+          },
+          "200": {
+            "description": "OK ;D",
+            "content": {
+              "application/json": {
+                "schema": "object",
+                "$ref": "#/components/schemas/Termos"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/delete-termo/{id}": {
+      "delete": {
+        "summary": "Apagar um termo da API pelo seu id.",
+        "description": "Rota responsável por deletar um termo da aplicação por meio do id que o cliente irá fornecer.",
+        "tags": ["Termos"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do termo que será apagado.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad request, bro >:("
+          },
+          "200": {
+            "description": "OK ;D"
           }
         }
       }
