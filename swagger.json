@@ -15,7 +15,7 @@
       "description": "API de teste - desenvolvimento e homologação"
     },
     {
-      "url": "https://api-guidedev.herokuapp.com/termos",
+      "url": "https://api-guide-dev.herokuapp.com/termos",
       "description": "API de produção"
     }
   ],
