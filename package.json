@@ -1,10 +1,13 @@
 {
   "name": "crud-codelab-c17-m3",
-  "version": "1.0.0",
   "description": "",
+  "version": "1.0.0",
+  "engines": {
+    "node": "14.18.0"
+  },
   "main": "index.js",
   "scripts": {
-    "start": "node index",
+    "start": "node index.js",
     "dev": "nodemon index"
   },
   "repository": {
