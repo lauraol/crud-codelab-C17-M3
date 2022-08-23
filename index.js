@@ -1,4 +1,3 @@
-require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const routes = require('./src/routes/termo.route');
@@ -15,5 +14,5 @@ app.use('/termos', routes);
 app.use('/api-docs', routes);
 
 app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`);
+  console.log(`Servidor rodando na porta http://localhost:${port}`);
 });
