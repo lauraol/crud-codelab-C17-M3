@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: 'URI_DATABASE' });
 
 const express = require('express');
 const cors = require('cors');
