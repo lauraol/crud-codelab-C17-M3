@@ -8,18 +8,23 @@ const UsuarioSchema = new mongoose.Schema({
   apelido: {
     type: String,
     require: true,
+    unique: true,
   },
   cpf: {
     type: String,
     require: true,
+    unique: true,
   },
   email: {
     type: String,
     require: true,
+    unique: true,
+    lowercase: true,
   },
   senha: {
     type: String,
     require: true,
+    select: false,
   },
 });
 
