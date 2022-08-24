@@ -1,0 +1,23 @@
+[
+  {
+    "nome": "Douglas Volcato",
+    "apelido": "DouglasMB",
+    "cpf": "000.000.000-00",
+    "email": "douglasteste@gmail.com",
+    "senha": "lalalala?!"
+  },
+  {
+    "nome": "Lucas Oliveira",
+    "apelido": "Lucas S2",
+    "cpf": "000.000.000-00",
+    "email": "lucasteste@gmail.com",
+    "senha": "teste?!"
+  },
+  {
+    "nome": "Jane Lima",
+    "apelido": "Super Jane",
+    "cpf": "000.000.000-00",
+    "email": "jardejaneteste@gmail.com",
+    "senha": "124lala?"
+  }
+]

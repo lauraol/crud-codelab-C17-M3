@@ -2,7 +2,8 @@ const router = require('express').Router();
 const controllerTermos = require('../controllers/termo.controller');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../../swagger.json');
-const { validId, validObjectBody } = require('../middlewares/termo.middleware');
+const { validId } = require('../middlewares/validacoes-gerais.middleware');
+const { validObjectBody } = require('../middlewares/termo.middleware');
 
 router.use('/api-docs', swaggerUi.serve);
 router.get('/api-docs', swaggerUi.setup(swaggerDocument));
