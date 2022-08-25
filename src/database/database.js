@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const connectToDatabase = () => {
+/*const connectToDatabase = () => {
   console.log('Conectando com o banco de dados...');
   mongoose
     .connect(
@@ -14,9 +14,9 @@ const connectToDatabase = () => {
     .catch((error) => {
       console.log(`Erro ao conectar com o MongoDB: ${error}`);
     });
-};
+};*/
 
-/*const connectToDatabase = () => {
+const connectToDatabase = () => {
   console.log('Conectando com o banco de dados...');
   mongoose
     .connect(String(process.env.URI_DATABASE), {
@@ -27,6 +27,6 @@ const connectToDatabase = () => {
     .catch((error) => {
       console.log(`Erro ao conectar com o MongoDB: ${error}`);
     });
-};*/
+};
 
 module.exports = connectToDatabase;
