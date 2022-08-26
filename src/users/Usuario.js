@@ -27,6 +27,10 @@ const UsuarioSchema = new mongoose.Schema({
     require: true,
     select: false,
   },
+  foto: {
+    type: String,
+    require: true,
+  },
 });
 
 UsuarioSchema.pre('save', async function (next) {

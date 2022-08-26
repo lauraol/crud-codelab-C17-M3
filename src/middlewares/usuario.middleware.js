@@ -6,7 +6,8 @@ const validObjectBody = (req, res, next) => {
     !usuario.apelido ||
     !usuario.cpf ||
     !usuario.email ||
-    !usuario.senha
+    !usuario.senha ||
+    !usuario.foto
   ) {
     return res
       .status(400)
