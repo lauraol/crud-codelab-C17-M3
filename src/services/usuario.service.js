@@ -15,8 +15,6 @@ findByEmailUsuarioService = async (email) => {
   return emailDoUsuario;
 };
 
-//const findByEmailUserService = (email) => User.findOne({ email: email });
-
 const createUsuarioService = async (newUsuario) => {
   const createdUsuario = await Usuarios.create(newUsuario);
   return createdUsuario;

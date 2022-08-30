@@ -1,7 +1,8 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
-const { findByEmailUsuarioService } = require('../services/usuario.service');
+const { findByIdUsuarioService } = require('../services/usuario.service');
 
+// verificação para conseguir pegar o id do usuário quando ele realizar alguma postagem e para isso ele precisa ter um token
 module.exports = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
@@ -24,7 +25,7 @@ module.exports = (req, res, next) => {
   }
 
   jwt.verify(token, String(process.env.SECRET), async (err, decoded) => {
-    const user = findByEmailUsuarioService(decoded.id);
+    const user = findByIdUsuarioService(decoded.id);
 
     if (err || !user || !user.id) {
       return res
