@@ -22,7 +22,7 @@
   "paths": {
     "/all-termos": {
       "get": {
-        "summary": "Lista de todos os termos cadastrados.",
+        "summary": "Listar de todos os termos cadastrados.",
         "description": "Rota responsável por listar todos os termos cadastrados na aplicação.",
         "tags": ["Termos"],
         "responses": {
@@ -47,7 +47,7 @@
     },
     "/one-termo/{id}": {
       "get": {
-        "summary": "Busca um termo cadastrado de acordo com o id solicitado.",
+        "summary": "Buscar um termo cadastrado de acordo com o id solicitado.",
         "description": "Rota responsável por trazer apenas o termo solicitado com base no id passado.",
         "tags": ["Termos"],
         "parameters": [
@@ -185,6 +185,176 @@
           }
         }
       }
+    },
+    "/all-usuarios": {
+      "get": {
+        "summary": "Lista todos os usuários cadastrados.",
+        "description": "Rota responsável por listar todos os usuários cadastrados no sistema.",
+        "tags": ["Usuarios"],
+        "responses": {
+          "404": {
+            "description": "Not Found ;("
+          },
+          "200": {
+            "description": "OK ;D",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Usuarios"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/one-usuario/{id}": {
+      "get": {
+        "summary": "Buscar um usuário cadastrado de acordo com o id solicitado.",
+        "description": "Rota responsável por trazer apenas o usuário solicitado com base no id passado.",
+        "tags": ["Usuarios"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do usuário que será buscado.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Not Found ;(",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Usuarios"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/create-usuario": {
+      "post": {
+        "summary": "Cadastrar usuário no Guide Dev </>",
+        "description": "Rota responsável por cadastrar um usuário na API.",
+        "tags": ["Usuarios"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuarios"
+              }
+            },
+            "examples": {
+              "Usuarios": {
+                "value": {
+                  "nome": "Teste",
+                  "apelido": "Apelido da conta teste",
+                  "cpf": "000.000.000-10",
+                  "email": "emailexemplo@gmail.com",
+                  "senha": "1234",
+                  "foto": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGVvcGxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad request, bro >:("
+          },
+          "201": {
+            "description": "Usuário created :)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Usuarios"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/edit-usuario/{id}": {
+      "put": {
+        "summary": "Editar um usuário existente na API por meio do id.",
+        "description": "Rota responsável por fazer a edição de um usuário conforme o id passado pelo cliente.",
+        "tags": ["Usuarios"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do usuário que será editado.",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuarios"
+              },
+              "examples": {
+                "Usuarios": {
+                  "value": {
+                    "nome": "Teste",
+                    "apelido": "Apelido da conta teste",
+                    "cpf": "000.000.000-10",
+                    "email": "emailexemplo@gmail.com",
+                    "senha": "1234",
+                    "foto": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGVvcGxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad request, bro >:("
+          },
+          "200": {
+            "description": "OK ;D",
+            "content": {
+              "application/json": {
+                "schema": "object",
+                "$ref": "#/components/schemas/Usuarios"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/delete-usuario/{id}": {
+      "delete": {
+        "summary": "Apagar um usuário da API pelo seu id.",
+        "description": "Rota responsável por deletar um usuário da aplicação por meio do id que o cliente irá fornecer.",
+        "tags": ["Usuarios"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do usuário que será apagado.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad request, bro >:("
+          },
+          "200": {
+            "description": "OK ;D"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -203,6 +373,29 @@
           },
           "ano_de_criacao": {
             "type": "number"
+          }
+        }
+      },
+      "Usuarios": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "apelido": {
+            "type": "string"
+          },
+          "cpf": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "senha": {
+            "type": "string"
+          },
+          "foto": {
+            "type": "string"
           }
         }
       }
