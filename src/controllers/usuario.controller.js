@@ -26,30 +26,6 @@ const findByIdUsuarioController = async (req, res) => {
   res.send(chosenUsuario);
 };
 
-/*const createUsuarioController = async (req, res) => {
-  const usuario = req.body;
-  const newUsuario = await usuariosService.createUsuarioService(usuario);
-  res.status(201).send(newUsuario);
-};*/
-
-const editUsuarioController = async (req, res) => {
-  const idParam = req.params.id;
-  const editUsuario = req.body;
-  const editedUsuario = await usuariosService.editUsuarioService(
-    idParam,
-    editUsuario,
-  );
-  res.send(editedUsuario);
-};
-
-const deleteUsuarioController = async (req, res) => {
-  const idParam = req.params.id;
-  await usuariosService.deleteUsuarioService(idParam);
-  res.send({ message: 'Usuário deletado com sucesso da base de dados ;)' });
-};
-
-/*------------------- */
-
 const createUsuarioController = async (req, res) => {
   const { nome, apelido, cpf, email, senha, foto } = req.body;
 
@@ -69,7 +45,7 @@ const createUsuarioController = async (req, res) => {
 
   const user = await usuariosService
     .createUsuarioService(req.body)
-    .catch((err) => console.log(err, message));
+    .catch((err) => console.log(err, err.message));
 
   if (!user) {
     return res.status(400).send({
@@ -90,6 +66,22 @@ const createUsuarioController = async (req, res) => {
     },
     token,
   });
+};
+
+const editUsuarioController = async (req, res) => {
+  const idParam = req.params.id;
+  const editUsuario = req.body;
+  const editedUsuario = await usuariosService.editUsuarioService(
+    idParam,
+    editUsuario,
+  );
+  res.send(editedUsuario);
+};
+
+const deleteUsuarioController = async (req, res) => {
+  const idParam = req.params.id;
+  await usuariosService.deleteUsuarioService(idParam);
+  res.send({ message: 'Usuário deletado com sucesso da base de dados ;)' });
 };
 
 module.exports = {

@@ -19,18 +19,7 @@ loginController = async (req, res) => {
 
   const token = authService.generateToken(user.id);
 
-  res.send(token);
-
-  /*res.status(201).send({
-    user: {
-      id: user.id,
-      nome,
-      apelido,
-      cpf,
-      email,
-    },
-    token,
-  });*/
+  res.send({ token });
 };
 
 module.exports = {
