@@ -1,4 +1,4 @@
-const Feed = require('../models/Feed');
+const Post = require('../models/Feed');
 
 // postagens
 const findAllPostagensService = async () => {
@@ -11,9 +11,8 @@ const findPostagemByIdService = async (idParam) => {
   return postagem;
 };
 
-const creatPostagemService = async (newPostagem) => {
-  const createdPostagem = await Feed.create(newPostagem);
-  return createdPostagem;
+const createPostagemService = async (message, userId) => {
+  return Post.create({ message, user: userId });
 };
 
 const editPostagemService = async (idParam, editPostagem) => {
@@ -53,7 +52,7 @@ const deleteCurtidaService = async (idParam) => {
 module.exports = {
   findAllPostagensService,
   findPostagemByIdService,
-  creatPostagemService,
+  createPostagemService,
   editPostagemService,
   deletePostagemService,
   creatComentarioService,

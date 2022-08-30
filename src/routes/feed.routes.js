@@ -2,6 +2,7 @@ const router = require('express').Router();
 const controllerFeed = require('../controllers/feed.controller');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../../swagger.json');
+const authMiddleware = require('../middlewares/auth.middleware');
 const { validId } = require('../middlewares/validacoes-gerais.middleware');
 const {
   validObjectBodyPostagem,
@@ -22,9 +23,9 @@ router.get(
 );
 
 router.post(
-  '/creat-postagem',
-  validObjectBodyPostagem,
-  controllerFeed.creatPostagemController,
+  '/create-postagem',
+  authMiddleware,
+  controllerFeed.createPostagemController,
 );
 
 router.put(

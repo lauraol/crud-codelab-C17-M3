@@ -1,4 +1,4 @@
-const Usuarios = require('../users/Usuario');
+const Usuarios = require('../models/Usuario');
 
 const findAllUsuariosService = async () => {
   const allUsuarios = await Usuarios.find();
@@ -9,6 +9,13 @@ const findByIdUsuarioService = async (idParam) => {
   const usuario = await Usuarios.findById(idParam);
   return usuario;
 };
+
+findByEmailUsuarioService = async (email) => {
+  const emailDoUsuario = await Usuarios.findOne({ email: email });
+  return emailDoUsuario;
+};
+
+//const findByEmailUserService = (email) => User.findOne({ email: email });
 
 const createUsuarioService = async (newUsuario) => {
   const createdUsuario = await Usuarios.create(newUsuario);
@@ -27,6 +34,7 @@ const deleteUsuarioService = async (idParam) => {
 module.exports = {
   findAllUsuariosService,
   findByIdUsuarioService,
+  findByEmailUsuarioService,
   createUsuarioService,
   editUsuarioService,
   deleteUsuarioService,

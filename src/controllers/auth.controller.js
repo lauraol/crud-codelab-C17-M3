@@ -5,34 +5,32 @@ const authService = require('../services/auth.service');
 loginController = async (req, res) => {
   const { email, senha } = req.body;
 
-  const usuario = await authService.authService(email);
+  const user = await authService.loginService(email);
 
-  if (!usuario) {
-    return res.status(400).send({
-      message: 'Usuário não encontrado na base de dados. Tente novamente...',
-    });
+  if (!user) {
+    return res.status(400).send({ message: 'Usuário não encontrado!' });
   }
 
-  const isPasswordValid = await bcrypt.compare(senha, usuario.senha);
+  const isPasswordValid = await bcrypt.compare(senha, user.senha);
 
   if (!isPasswordValid) {
-    return res
-      .status(400)
-      .send({ message: 'Senha inválida! Digite novamente...' });
+    return res.status(400).send({ message: 'Senha inválida!' });
   }
 
-  const token = authService.generateToken(usuario.id);
+  const token = authService.generateToken(user.id);
 
-  res.status(201).send({
-    usuario: {
-      id: usuario.id,
+  res.send(token);
+
+  /*res.status(201).send({
+    user: {
+      id: user.id,
       nome,
       apelido,
       cpf,
       email,
     },
     token,
-  });
+  });*/
 };
 
 module.exports = {

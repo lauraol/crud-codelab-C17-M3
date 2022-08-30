@@ -1,6 +1,6 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
-const { findByIdUsuarioService } = require('../services/usuario.service');
+const { findByEmailUsuarioService } = require('../services/usuario.service');
 
 module.exports = (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -24,7 +24,7 @@ module.exports = (req, res, next) => {
   }
 
   jwt.verify(token, String(process.env.SECRET), async (err, decoded) => {
-    const user = findByIdUsuarioService(decoded.id);
+    const user = findByEmailUsuarioService(decoded.id);
 
     if (err || !user || !user.id) {
       return res
