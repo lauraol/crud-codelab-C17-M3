@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const controllerFeed = require('../controllers/feed.controller');
+const controllerPostagem = require('../controllers/postagem.controller');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../../swagger.json');
 const authMiddleware = require('../middlewares/auth.middleware');
@@ -8,68 +8,68 @@ const {
   validObjectBodyPostagem,
   validObjectBodyComentario,
   validObjectBodyCurtida,
-} = require('../middlewares/feed.middleware');
+} = require('../middlewares/postagem.middleware');
 
 router.use('/api-docs', swaggerUi.serve);
 router.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
-router.get('/all-postagens', controllerFeed.findAllPostagensController);
+/*router.get('/all-postagens', controllerPostagem.findAllPostagensController);
 
 router.get(
   '/one-postagem/:id',
   validId,
   validObjectBodyPostagem,
-  controllerFeed.findPostagemByIdController,
-);
+  controllerPostagem.findPostagemByIdController,
+);*/
 
 router.post(
   '/create-postagem',
   authMiddleware,
-  controllerFeed.createPostagemController,
+  controllerPostagem.createPostagemController,
 );
 
-router.put(
+/*router.put(
   '/edit-postagem/:id',
   validId,
   validObjectBodyPostagem,
-  controllerFeed.editPostagemController,
+  controllerPostagem.editPostagemController,
 );
 
 router.delete(
   '/delete-postagem/:id',
   validId,
-  controllerFeed.deletePostagemController,
+  controllerPostagem.deletePostagemController,
 );
 
 router.post(
   '/creat-comentarios',
   validObjectBodyComentario,
-  controllerFeed.creatComentarioController,
+  controllerPostagem.creatComentarioController,
 );
 
 router.put(
   '/edit-comentario/:id',
   validId,
   validObjectBodyComentario,
-  controllerFeed.editComentarioController,
+  controllerPostagem.editComentarioController,
 );
 
 router.delete(
   '/delete-comentario/:id',
   validId,
-  controllerFeed.deleteComentarioController,
+  controllerPostagem.deleteComentarioController,
 );
 
 router.post(
   'creat-curtida',
   validObjectBodyCurtida,
-  controllerFeed.creatCurtidaController,
+  controllerPostagem.creatCurtidaController,
 );
 
 router.delete(
   'delete-curtida/:id',
   validId,
-  controllerFeed.deleteCurtidaController,
-);
+  controllerPostagem.deleteCurtidaController,
+);*/
 
 module.exports = router;

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const FeedSchema = new mongoose.Schema({
+const PostagemSchema = new mongoose.Schema({
   usuario: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Usuario',
@@ -20,6 +20,6 @@ const FeedSchema = new mongoose.Schema({
   },
 });
 
-const Feed = mongoose.model('teacher-guides-feed', FeedSchema);
+const Post = mongoose.model('teacher-guides-feed', PostagemSchema);
 
-module.exports = Feed;
+module.exports = Post;

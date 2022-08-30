@@ -1,4 +1,4 @@
-const Post = require('../models/Feed');
+const Post = require('../models/Postagem');
 
 // postagens
 const findAllPostagensService = async () => {

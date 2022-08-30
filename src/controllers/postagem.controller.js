@@ -1,4 +1,4 @@
-const postService = require('../services/feed.service');
+const postService = require('../services/postagem.service');
 
 // postagens
 /*const findAllPostagensController = async ((req, res) => {
