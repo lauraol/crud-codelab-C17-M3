@@ -5,8 +5,8 @@ const findAllUsuariosService = async () => {
   return allUsuarios;
 };
 
-const findByIdUsuarioService = async (idParam) => {
-  const usuario = await Usuarios.findById(idParam);
+const findByIdUsuarioService = async (idUser) => {
+  const usuario = await Usuarios.findById(idUser);
   return usuario;
 };
 

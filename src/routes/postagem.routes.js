@@ -1,14 +1,17 @@
 const router = require('express').Router();
+
 const controllerPostagem = require('../controllers/postagem.controller');
+const authMiddleware = require('../middlewares/auth.middleware');
+
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../../swagger.json');
-const authMiddleware = require('../middlewares/auth.middleware');
-const { validId } = require('../middlewares/validacoes-gerais.middleware');
-const {
+
+// const { validId } = require('../middlewares/validacoes-gerais.middleware');
+/* const {
   validObjectBodyPostagem,
   validObjectBodyComentario,
   validObjectBodyCurtida,
-} = require('../middlewares/postagem.middleware');
+} = require('../middlewares/postagem.middleware');*/
 
 router.use('/api-docs', swaggerUi.serve);
 router.get('/api-docs', swaggerUi.setup(swaggerDocument));

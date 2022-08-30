@@ -1,13 +1,13 @@
 const Post = require('../models/Postagem');
 
 // postagens
-const findAllPostagensService = async () => {
-  const allPostagensDoFeed = await Feed.find();
+/*const findAllPostagensService = async () => {
+  const allPostagensDoFeed = await Post.find();
   return allPostagensDoFeed;
-};
+};*/
 
-const findPostagemByIdService = async (idParam) => {
-  const postagem = await Feed.findById(idParam);
+const findPostagemByIdService = async (idUser) => {
+  const postagem = await Post.findById(idUser);
   return postagem;
 };
 
@@ -15,41 +15,41 @@ const createPostagemService = async (message, userId) => {
   return Post.create({ message, user: userId });
 };
 
-const editPostagemService = async (idParam, editPostagem) => {
-  const updatePostagem = await Feed.findByIdAndUpdate(idParam, editPostagem);
+/*const editPostagemService = async (idParam, editPostagem) => {
+  const updatePostagem = await Post.findByIdAndUpdate(idParam, editPostagem);
   return updatePostagem;
-};
+};*/
 
-const deletePostagemService = async (idParam) => {
-  return await Feed.findByIdAndDelete(idParam);
-};
+/*const deletePostagemService = async (idParam) => {
+  return await Post.findByIdAndDelete(idParam);
+};*/
 
 // comentários
-const creatComentarioService = async (newComentario) => {
-  const createdComentario = await Feed.create(newComentario);
+/*const creatComentarioService = async (newComentario) => {
+  const createdComentario = await Post.create(newComentario);
   return createdComentario;
 };
 
 const editComentarioService = async (idParam, editComentario) => {
-  const updateComentario = await Feed.create(idParam, editComentario);
+  const updateComentario = await Post.create(idParam, editComentario);
   return updateComentario;
 };
 
 const deleteComentarioService = async (idParam) => {
-  return await Feed.findByIdAndDelete(idParam);
-};
+  return await Post.findByIdAndDelete(idParam);
+};*/
 
 // curtidas
-const creatCurtidaService = async (newCurtida) => {
-  const createdCurtida = await Feed.creat(newCurtida);
+/*const creatCurtidaService = async (newCurtida) => {
+  const createdCurtida = await Post.creat(newCurtida);
   return createdCurtida;
 };
 
 const deleteCurtidaService = async (idParam) => {
-  return await Feed.findByIdAndDelete(idParam);
-};
+  return await Post.findByIdAndDelete(idParam);
+};*/
 
-module.exports = {
+/*module.exports = {
   findAllPostagensService,
   findPostagemByIdService,
   createPostagemService,
@@ -60,4 +60,9 @@ module.exports = {
   deleteComentarioService,
   creatCurtidaService,
   deleteCurtidaService,
+};*/
+
+module.exports = {
+  findPostagemByIdService,
+  createPostagemService,
 };
